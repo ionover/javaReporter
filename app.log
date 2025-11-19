@@ -1,5 +1,5 @@
 Completed initialization in 0 ms
-2025-11-19T17:42:04.363+03:00  INFO 16519 --- [jasperReporte] [nio-9999-exec-1] n.s.j.engine.design.JRJdk13Compiler      : /tmp/Flower_Landscape_PieChartDataset_68e474f0a4b3cf22a0ec042cd8326044e58ed9ba11e892af2cae1c33786067f0.java:90: warning: [removal] Double(double) in Double has been deprecated and marked for removal
+2025-11-19T17:48:12.146+03:00  INFO 18140 --- [jasperReporte] [nio-9999-exec-1] n.s.j.engine.design.JRJdk13Compiler      : /tmp/Flower_Landscape_PieChartDataset_68e474f0a4b3cf22a0ec042cd8326044e58ed9ba11e892af2cae1c33786067f0.java:90: warning: [removal] Double(double) in Double has been deprecated and marked for removal
                 value = new Double(200*Math.random()*5); //$JR_EXPR_ID=10$
                         ^
 /tmp/Flower_Landscape_PieChartDataset_68e474f0a4b3cf22a0ec042cd8326044e58ed9ba11e892af2cae1c33786067f0.java:124: warning: [removal] Double(double) in Double has been deprecated and marked for removal
@@ -10,32 +10,13 @@ Completed initialization in 0 ms
                         ^
 3 warnings
 
-2025-11-19T17:42:04.367+03:00 ERROR 16519 --- [jasperReporte] [nio-9999-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Ошибка при генерации PDF] with root cause
+2025-11-19T17:48:12.295+03:00 ERROR 18140 --- [jasperReporte] [nio-9999-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Ошибка при генерации PDF] with root cause
 
-net.sf.jasperreports.engine.util.JRFontNotFoundException: Font "Times New Roman" is not available to the JVM. See the Javadoc for more details.
-	at net.sf.jasperreports.engine.fonts.FontUtil.checkAwtFont(FontUtil.java:630) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.loadFont(SimpleTextLineWrapper.java:363) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.getGeneralFontInfo(SimpleTextLineWrapper.java:333) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.createFontInfo(SimpleTextLineWrapper.java:271) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.start(SimpleTextLineWrapper.java:233) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.TextMeasurer.measure(TextMeasurer.java:581) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillTextElement.chopTextElement(JRFillTextElement.java:680) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillTextField.prepare(JRFillTextField.java:779) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:349) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillFrame.prepare(JRFillFrame.java:274) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:349) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:444) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:419) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillTitle(JRVerticalFiller.java:340) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportStart(JRVerticalFiller.java:271) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:119) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:626) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.BaseReportFiller.fill(BaseReportFiller.java:435) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFiller.fill(JRFiller.java:163) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFiller.fill(JRFiller.java:146) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.JasperFillManager.fill(JasperFillManager.java:757) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:1073) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at ru.mycrg.jasperreporte.JasperService.createPdf(JasperService.java:30) ~[classes/:na]
+net.sf.jasperreports.engine.JRRuntimeException: Missing JasperReports PDF Extension (jasperreports-pdf-x.x.x.jar).
+	at net.sf.jasperreports.engine.JasperExportManager.getPdfExporter(JasperExportManager.java:240) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.JasperExportManager.exportToPdf(JasperExportManager.java:216) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.JasperExportManager.exportReportToPdf(JasperExportManager.java:572) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at ru.mycrg.jasperreporte.JasperService.createPdf(JasperService.java:33) ~[classes/:na]
 	at ru.mycrg.jasperreporte.JasperController.createFile(JasperController.java:36) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]

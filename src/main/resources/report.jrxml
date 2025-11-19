@@ -3,11 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="47"/>
 	<property name="ireport.y" value="451"/>
-	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="50.0" bold="false"/>
-	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18.0" bold="false"/>
-	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="14.0" bold="true"/>
-	<style name="Detail" mode="Transparent" fontName="Arial"/>
-	<style name="Row" mode="Transparent" fontName="Arial" pdfFontName="Times-Roman">
+	<style name="Title" forecolor="#FFFFFF" fontName="DejaVu Sans" fontSize="50.0" bold="false"/>
+	<style name="SubTitle" forecolor="#666666" fontName="DejaVu Sans" fontSize="18.0" bold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="DejaVu Sans" fontSize="14.0" bold="true"/>
+	<style name="Detail" mode="Transparent" fontName="DejaVu Sans"/>
+	<style name="Row" mode="Transparent" fontName="DejaVu Sans" pdfFontName="Times-Roman">
 		<conditionalStyle mode="Opaque" backcolor="#F0EFEF">
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
 		</conditionalStyle>
@@ -110,13 +110,13 @@ There are two flowers, the first one is printed only starting from the second pa
 	</columnFooter>
 	<pageFooter height="16" splitType="Stretch">
 		<element kind="frame" uuid="6f4fe8ef-88ca-4d5d-b46a-054826bb7893" mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699">
-			<element kind="textField" uuid="970781d6-87a0-4d3d-a07b-5ae173a1317a" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" fontName="Arial" fontSize="12.0" evaluationTime="Report" bold="false" vTextAlign="Middle" style="Column header">
+			<element kind="textField" uuid="970781d6-87a0-4d3d-a07b-5ae173a1317a" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" fontName="DejaVu Sans" fontSize="12.0" evaluationTime="Report" bold="false" vTextAlign="Middle" style="Column header">
 				<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
 			</element>
-			<element kind="textField" uuid="42664b34-c87b-42f8-911b-bd9c2ab9111e" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" fontName="Arial" fontSize="12.0" bold="false" hTextAlign="Right" vTextAlign="Middle" style="Column header">
+			<element kind="textField" uuid="42664b34-c87b-42f8-911b-bd9c2ab9111e" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" fontName="DejaVu Sans" fontSize="12.0" bold="false" hTextAlign="Right" vTextAlign="Middle" style="Column header">
 				<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
 			</element>
-			<element kind="textField" uuid="06b3d6e8-b4a5-4251-b1fb-f640689933e8" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" fontName="Arial" fontSize="12.0" pattern="EEEEE dd MMMMM yyyy" bold="false" vTextAlign="Middle" style="Column header">
+			<element kind="textField" uuid="06b3d6e8-b4a5-4251-b1fb-f640689933e8" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" fontName="DejaVu Sans" fontSize="12.0" pattern="EEEEE dd MMMMM yyyy" bold="false" vTextAlign="Middle" style="Column header">
 				<expression><![CDATA[new java.util.Date()]]></expression>
 			</element>
 		</element>

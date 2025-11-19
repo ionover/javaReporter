@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  jasper-reporter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jasper-reporter:latest
+    ports:
+      - "9999:9999"

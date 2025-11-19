@@ -1,5 +1,5 @@
-2025-11-19T17:37:30.331+03:00  INFO 15212 --- [jasperReporte] [nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2025-11-19T17:37:30.750+03:00  INFO 15212 --- [jasperReporte] [nio-9999-exec-1] n.s.j.engine.design.JRJdk13Compiler      : /tmp/Flower_Landscape_PieChartDataset_68e474f0a4b3cf22a0ec042cd8326044e58ed9ba11e892af2cae1c33786067f0.java:90: warning: [removal] Double(double) in Double has been deprecated and marked for removal
+Completed initialization in 0 ms
+2025-11-19T17:42:04.363+03:00  INFO 16519 --- [jasperReporte] [nio-9999-exec-1] n.s.j.engine.design.JRJdk13Compiler      : /tmp/Flower_Landscape_PieChartDataset_68e474f0a4b3cf22a0ec042cd8326044e58ed9ba11e892af2cae1c33786067f0.java:90: warning: [removal] Double(double) in Double has been deprecated and marked for removal
                 value = new Double(200*Math.random()*5); //$JR_EXPR_ID=10$
                         ^
 /tmp/Flower_Landscape_PieChartDataset_68e474f0a4b3cf22a0ec042cd8326044e58ed9ba11e892af2cae1c33786067f0.java:124: warning: [removal] Double(double) in Double has been deprecated and marked for removal
@@ -10,17 +10,24 @@
                         ^
 3 warnings
 
-2025-11-19T17:37:30.812+03:00 ERROR 15212 --- [jasperReporte] [nio-9999-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Ошибка при генерации PDF] with root cause
+2025-11-19T17:42:04.367+03:00 ERROR 16519 --- [jasperReporte] [nio-9999-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Ошибка при генерации PDF] with root cause
 
-net.sf.jasperreports.engine.JRException: Byte data not found at: flower1.png.
-	at net.sf.jasperreports.repo.RepositoryUtil.getBytesFromLocation(RepositoryUtil.java:215) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.renderers.util.RendererUtil.getNonLazyRenderable(RendererUtil.java:179) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillImage.evaluateImage(JRFillImage.java:497) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillImage.evaluate(JRFillImage.java:431) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillElementContainer.evaluate(JRFillElementContainer.java:282) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRFillBand.evaluate(JRFillBand.java:530) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillBackground(JRVerticalFiller.java:2194) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
-	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportStart(JRVerticalFiller.java:269) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+net.sf.jasperreports.engine.util.JRFontNotFoundException: Font "Times New Roman" is not available to the JVM. See the Javadoc for more details.
+	at net.sf.jasperreports.engine.fonts.FontUtil.checkAwtFont(FontUtil.java:630) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.loadFont(SimpleTextLineWrapper.java:363) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.getGeneralFontInfo(SimpleTextLineWrapper.java:333) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.createFontInfo(SimpleTextLineWrapper.java:271) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.SimpleTextLineWrapper.start(SimpleTextLineWrapper.java:233) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.TextMeasurer.measure(TextMeasurer.java:581) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRFillTextElement.chopTextElement(JRFillTextElement.java:680) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRFillTextField.prepare(JRFillTextField.java:779) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:349) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRFillFrame.prepare(JRFillFrame.java:274) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:349) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:444) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:419) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillTitle(JRVerticalFiller.java:340) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportStart(JRVerticalFiller.java:271) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
 	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:119) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
 	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:626) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]
 	at net.sf.jasperreports.engine.fill.BaseReportFiller.fill(BaseReportFiller.java:435) ~[jasperreports-7.0.3.jar:7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd]

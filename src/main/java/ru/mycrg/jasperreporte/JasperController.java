@@ -1,5 +1,8 @@
 package ru.mycrg.jasperreporte;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +20,16 @@ public class JasperController {
     }
 
     @PostMapping("/test")
-    public void createFile(@RequestBody ReportDto dto) {
+    public ResponseEntity<byte[]> createFile(@RequestBody ReportDto dto) {
         byte[] pdfBytes = jasperService.createPdf(dto);
         fileService.saveFile(pdfBytes);
+        
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("filename", "report.pdf");
+        
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(pdfBytes);
     }
 }

@@ -8,9 +8,7 @@
     <parameter name="TITLE" class="java.lang.String"/>
     <parameter name="CELL1" class="java.lang.String"/>
     <parameter name="CELL2" class="java.lang.String"/>
-    <parameter name="IMAGE_PATH" class="java.lang.String" isForPrompting="false">
-        <defaultValueExpression><![CDATA["/flower1.png"]]></defaultValueExpression>
-    </parameter>
+    <parameter name="IMAGE_PATH" class="java.io.InputStream"/>
     
     <!-- Параметры для второй страницы -->
     <parameter name="PRICE" class="java.lang.String"/>

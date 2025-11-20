@@ -1,0 +1,131 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3 -->
+<jasperReport name="report_final" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f3c5dd1-5f9e-40e2-904d-54c0c768efa5">
+    <parameter name="TITLE" class="java.lang.String"/>
+    <parameter name="CELL1" class="java.lang.String"/>
+    <parameter name="CELL2" class="java.lang.String"/>
+    <parameter name="IMAGE_PATH" class="java.io.InputStream"/>
+    <parameter name="PRICE" class="java.lang.String"/>
+    <parameter name="AREA" class="java.lang.String"/>
+    <field name="num" class="java.lang.Integer"/>
+    <field name="x" class="java.lang.Double"/>
+    <field name="y" class="java.lang.Double"/>
+    <title height="450" splitType="Stretch">
+        <element kind="textField" uuid="c371fefa-27ac-4595-a378-9782288f690d" x="0" y="10" width="555" height="30">
+            <expression><![CDATA[$P{TITLE}]]></expression>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="0.0"/>
+            </box>
+            <paragraph/>
+        </element>
+        <element kind="image" uuid="b270214a-251b-491f-85bf-27f28c7ae0f3" x="127" y="50" width="300" height="200">
+            <expression><![CDATA[$P{IMAGE_PATH}]]></expression>
+        </element>
+        <element kind="staticText" uuid="3ebcff1f-e0bf-4020-ab97-2da57351a855" x="127" y="270" width="150" height="30">
+            <text><![CDATA[Ячейка 1]]></text>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="staticText" uuid="7633b63e-a858-4407-af44-3b27b4ade0be" x="277" y="270" width="150" height="30">
+            <text><![CDATA[Ячейка 2]]></text>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="textField" uuid="7632db54-5498-4673-aa5a-512e2ea8ad3b" x="127" y="300" width="150" height="30">
+            <expression><![CDATA[$P{CELL1}]]></expression>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="textField" uuid="f94c1566-9a36-46e5-87c9-0109ca159dc5" x="277" y="300" width="150" height="30">
+            <expression><![CDATA[$P{CELL2}]]></expression>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="break" uuid="6ac1b807-8352-429d-bea1-e7e95e4463cd" x="0" y="449" width="100" height="1">
+            <property name="breakType" value="Page"/>
+        </element>
+    </title>
+    <pageHeader height="120" splitType="Stretch">
+        <printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+        <element kind="staticText" uuid="9fc77fc5-7ac2-4302-8126-9bf1a8e52282" x="0" y="10" width="555" height="30">
+            <text><![CDATA[Ведомость координат]]></text>
+            <property name="textAlignment" value="Center"/>
+            <property name="fontSize" value="16"/>
+        </element>
+        <element kind="staticText" uuid="142d4ba0-5edb-4ebb-a4ac-e138ed793e01" x="50" y="60" width="80" height="20">
+            <text><![CDATA[Цена:]]></text>
+            <property name="fontSize" value="12"/>
+        </element>
+        <element kind="textField" uuid="0967fcfd-900b-4c3f-b4a0-8f9081625f8a" x="130" y="60" width="200" height="20">
+            <expression><![CDATA[$P{PRICE}]]></expression>
+            <property name="fontSize" value="12"/>
+        </element>
+        <element kind="staticText" uuid="bd26ed0e-d40b-4586-9621-b1dec5bdd8bc" x="50" y="90" width="80" height="20">
+            <text><![CDATA[Площадь:]]></text>
+            <property name="fontSize" value="12"/>
+        </element>
+        <element kind="textField" uuid="525e1815-8a5a-435e-8087-03d10405c60d" x="130" y="90" width="200" height="20">
+            <expression><![CDATA[$P{AREA}]]></expression>
+            <property name="fontSize" value="12"/>
+        </element>
+    </pageHeader>
+    <columnHeader height="30" splitType="Stretch">
+        <printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+        <element kind="staticText" uuid="a78b9422-9aef-4b5f-9d97-8aa89730d6f3" x="50" y="0" width="50" height="30">
+            <text><![CDATA[№]]></text>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="staticText" uuid="62002b62-0a69-433f-9a4e-7ec819a3e46e" x="100" y="0" width="200" height="30">
+            <text><![CDATA[X]]></text>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="staticText" uuid="ac149e1a-1550-43cf-b443-8e4dc1dd14d3" x="300" y="0" width="200" height="30">
+            <text><![CDATA[Y]]></text>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+    </columnHeader>
+    <detail>
+        <band height="25" splitType="Stretch">
+        <element kind="textField" uuid="1665088c-5922-4c66-9f44-180335519aa0" x="50" y="0" width="50" height="25">
+            <expression><![CDATA[$F{num}]]></expression>
+            <property name="textAlignment" value="Center"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="textField" uuid="b0ba320c-5dca-466f-9d6d-0cdcaed77e6e" x="100" y="0" width="200" height="25">
+            <expression><![CDATA[$F{x}]]></expression>
+            <property name="textAlignment" value="Center"/>
+            <property name="pattern" value="#,##0.00"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        <element kind="textField" uuid="a8257c18-7d9e-4ccd-8189-27484a2021f2" x="300" y="0" width="200" height="25">
+            <expression><![CDATA[$F{y}]]></expression>
+            <property name="textAlignment" value="Center"/>
+            <property name="pattern" value="#,##0.00"/>
+            <box>
+                <pen lineWidth="1.0"/>
+            </box>
+        </element>
+        </band>
+    </detail>
+</jasperReport>

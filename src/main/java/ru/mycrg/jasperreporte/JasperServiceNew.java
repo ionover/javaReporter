@@ -45,13 +45,20 @@ public class JasperServiceNew {
      */
     public byte[] createPdf(String title, String picture, String cell1, String cell2, String crs, Double area,
                             List<CoordinatesDto> coordinates) {
-        try (InputStream templateStream = getClass().getResourceAsStream("/report_new.jrxml")) {
+        try (InputStream templateStream = getClass().getResourceAsStream("/report_final.jrxml")) {
             if (templateStream == null) {
-                throw new IllegalStateException("Не найден шаблон /report_new.jrxml в classpath");
+                throw new IllegalStateException("Не найден шаблон /report_final.jrxml в classpath");
             }
 
             // Компилируем JRXML в JasperReport
-            JasperReport jasperReport = JasperCompileManager.compileReport(templateStream);
+            JasperReport jasperReport = null;
+            try {
+                jasperReport = JasperCompileManager.compileReport(templateStream);
+            } catch (Exception e) {
+                System.err.println("Ошибка компиляции JRXML: " + e.getMessage());
+                e.printStackTrace();
+                throw e;
+            }
 
             // Подготавливаем параметры
             Map<String, Object> params = new HashMap<>();

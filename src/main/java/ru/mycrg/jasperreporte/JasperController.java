@@ -33,7 +33,6 @@ public class JasperController {
     public void createFile(@RequestParam ReportDto dto) {
         // сервис должен вернуть готовый PDF как массив байт
 
-
         byte[] pdfBytes = jasperService.createPdf(dto);
 
         fileService.saveFile(pdfBytes);

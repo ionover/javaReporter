@@ -17,46 +17,6 @@ import java.util.Map;
 public class JasperServiceNew {
 
     /**
-     * Класс для передачи координат в отчёт JasperReports
-     * Нужен для связи с полями в JRXML (number, x, y)
-     */
-    public static class Coordinate {
-        private Integer number;
-        private String x;
-        private String y;
-
-        public Coordinate(Integer number, String x, String y) {
-            this.number = number;
-            this.x = x;
-            this.y = y;
-        }
-
-        public Integer getNumber() {
-            return number;
-        }
-
-        public void setNumber(Integer number) {
-            this.number = number;
-        }
-
-        public String getX() {
-            return x;
-        }
-
-        public void setX(String x) {
-            this.x = x;
-        }
-
-        public String getY() {
-            return y;
-        }
-
-        public void setY(String y) {
-            this.y = y;
-        }
-    }
-
-    /**
      * Основной метод - работает с твоим ReportDto
      */
     public byte[] createPdf(ReportDto reportDto) {
@@ -67,7 +27,7 @@ public class JasperServiceNew {
         ClientData data = reportDto.d;
 
         // Конвертируем координаты из твоего DTO в формат для JasperReports
-        List<Coordinate> coordinates = convertCoordinates(data.getCoordinates());
+        List<CoordinatesDto> coordinates = convertCoordinates(data.getCoordinates());
 
         return createPdf(
             data.getColumn(),  // CELL1
@@ -81,12 +41,12 @@ public class JasperServiceNew {
     /**
      * Конвертирует твои CoordinatesDto в Coordinate для JasperReports
      */
-    private List<Coordinate> convertCoordinates(List<CoordinatesDto> dtoList) {
-        List<Coordinate> result = new ArrayList<>();
+    private List<CoordinatesDto> convertCoordinates(List<CoordinatesDto> dtoList) {
+        List<CoordinatesDto> result = new ArrayList<>();
         if (dtoList != null) {
             for (int i = 0; i < dtoList.size(); i++) {
                 CoordinatesDto dto = dtoList.get(i);
-                result.add(new Coordinate(i + 1, dto.getX(), dto.getY()));
+                result.add(new CoordinatesDto(i + 1, dto.getX(), dto.getY()));
             }
         }
         return result;
@@ -95,7 +55,7 @@ public class JasperServiceNew {
     /**
      * Низкоуровневый метод создания PDF
      */
-    public byte[] createPdf(String cell1, String cell2, String price, String area, List<Coordinate> coordinates) {
+    public byte[] createPdf(String cell1, String cell2, String price, String area, List<CoordinatesDto> coordinates) {
         try (InputStream templateStream = getClass().getResourceAsStream("/report_new.jrxml")) {
             if (templateStream == null) {
                 throw new IllegalStateException("Не найден шаблон /report_new.jrxml в classpath");
@@ -131,8 +91,8 @@ public class JasperServiceNew {
      * Пример использования - создание отчёта для точки (1 координата)
      */
     public byte[] createPointReport() {
-        List<Coordinate> coordinates = new ArrayList<>();
-        coordinates.add(new Coordinate(1, "55.7558", "37.6173")); // Москва
+        List<CoordinatesDto> coordinates = new ArrayList<>();
+        coordinates.add(new CoordinatesDto(1, "55.7558", "37.6173")); // Москва
         
         return createPdf(
             "Значение 1", 
@@ -147,17 +107,17 @@ public class JasperServiceNew {
      * Пример использования - создание отчёта для полигона (много координат)
      */
     public byte[] createPolygonReport() {
-        List<Coordinate> coordinates = new ArrayList<>();
-        coordinates.add(new Coordinate(1, "55.7558", "37.6173"));
-        coordinates.add(new Coordinate(2, "55.7559", "37.6174"));
-        coordinates.add(new Coordinate(3, "55.7560", "37.6175"));
-        coordinates.add(new Coordinate(4, "55.7561", "37.6176"));
-        coordinates.add(new Coordinate(5, "55.7562", "37.6177"));
-        coordinates.add(new Coordinate(6, "55.7563", "37.6178"));
-        coordinates.add(new Coordinate(7, "55.7564", "37.6179"));
-        coordinates.add(new Coordinate(8, "55.7565", "37.6180"));
-        coordinates.add(new Coordinate(9, "55.7566", "37.6181"));
-        coordinates.add(new Coordinate(10, "55.7567", "37.6182"));
+        List<CoordinatesDto> coordinates = new ArrayList<>();
+        coordinates.add(new CoordinatesDto(1, "55.7558", "37.6173"));
+        coordinates.add(new CoordinatesDto(2, "55.7559", "37.6174"));
+        coordinates.add(new CoordinatesDto(3, "55.7560", "37.6175"));
+        coordinates.add(new CoordinatesDto(4, "55.7561", "37.6176"));
+        coordinates.add(new CoordinatesDto(5, "55.7562", "37.6177"));
+        coordinates.add(new CoordinatesDto(6, "55.7563", "37.6178"));
+        coordinates.add(new CoordinatesDto(7, "55.7564", "37.6179"));
+        coordinates.add(new CoordinatesDto(8, "55.7565", "37.6180"));
+        coordinates.add(new CoordinatesDto(9, "55.7566", "37.6181"));
+        coordinates.add(new CoordinatesDto(10, "55.7567", "37.6182"));
         
         return createPdf(
             "Полигон А", 

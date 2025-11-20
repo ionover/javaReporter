@@ -61,9 +61,9 @@ public class JasperServiceNew {
             params.put("PRICE", crs != null ? crs : "");
             params.put("AREA", area != null ? String.format("%.2f", area) : "");
 
-            // Путь к картинке - если указана picture, можно будет добавить логику загрузки
-            // Пока используем дефолтную картинку
-            params.put("IMAGE_PATH", getClass().getResourceAsStream("/flower1.png"));
+            // Используем картинку из запроса
+            String imagePath = picture != null ? "/" + picture : "/flower1.png";
+            params.put("IMAGE_PATH", getClass().getResourceAsStream(imagePath));
 
             // Создаём datasource для таблицы координат
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(coordinates);

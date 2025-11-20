@@ -31,7 +31,7 @@
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="16" isBold="true"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$P{TITLE} != null ? $P{TITLE} : "Тестовый отчёт"]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{TITLE}]]></textFieldExpression>
             </textField>
             
             <!-- Картинка -->

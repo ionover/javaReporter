@@ -20,42 +20,31 @@ public class JasperServiceNew {
      * Основной метод - работает с твоим ReportDto
      */
     public byte[] createPdf(ReportDto reportDto) {
-        if (reportDto == null || reportDto.d == null) {
+        if (reportDto == null || reportDto.getD() == null) {
             throw new IllegalArgumentException("ReportDto или ClientData не должны быть null");
         }
 
-        ClientData data = reportDto.d;
+        ClientData data = reportDto.getD();
 
-        // Конвертируем координаты из твоего DTO в формат для JasperReports
-        List<CoordinatesDto> coordinates = convertCoordinates(data.getCoordinates());
+        // Используем координаты напрямую из запроса
+        List<CoordinatesDto> coordinates = data.getCoords() != null ? data.getCoords() : new ArrayList<>();
 
         return createPdf(
-            data.getColumn(),  // CELL1
-            data.getValue(),   // CELL2
-            data.getCrs(),     // PRICE (или можешь использовать для другого поля)
-            data.getArea(),    // AREA
-            coordinates
+                data.getTitle(),
+                data.getPicture(),
+                data.getColumn(),
+                data.getValue(),
+                data.getCrs(),
+                data.getArea(),
+                coordinates
         );
-    }
-
-    /**
-     * Конвертирует твои CoordinatesDto в Coordinate для JasperReports
-     */
-    private List<CoordinatesDto> convertCoordinates(List<CoordinatesDto> dtoList) {
-        List<CoordinatesDto> result = new ArrayList<>();
-        if (dtoList != null) {
-            for (int i = 0; i < dtoList.size(); i++) {
-                CoordinatesDto dto = dtoList.get(i);
-                result.add(new CoordinatesDto(i + 1, dto.getX(), dto.getY()));
-            }
-        }
-        return result;
     }
 
     /**
      * Низкоуровневый метод создания PDF
      */
-    public byte[] createPdf(String cell1, String cell2, String price, String area, List<CoordinatesDto> coordinates) {
+    public byte[] createPdf(String title, String picture, String cell1, String cell2, String crs, Double area,
+                            List<CoordinatesDto> coordinates) {
         try (InputStream templateStream = getClass().getResourceAsStream("/report_new.jrxml")) {
             if (templateStream == null) {
                 throw new IllegalStateException("Не найден шаблон /report_new.jrxml в classpath");
@@ -66,12 +55,14 @@ public class JasperServiceNew {
 
             // Подготавливаем параметры
             Map<String, Object> params = new HashMap<>();
-            params.put("CELL1", cell1);
-            params.put("CELL2", cell2);
-            params.put("PRICE", price);
-            params.put("AREA", area);
-            
-            // Путь к картинке в classpath
+            params.put("TITLE", title != null ? title : "");
+            params.put("CELL1", cell1 != null ? cell1 : "");
+            params.put("CELL2", cell2 != null ? cell2 : "");
+            params.put("PRICE", crs != null ? crs : "");
+            params.put("AREA", area != null ? String.format("%.2f", area) : "");
+
+            // Путь к картинке - если указана picture, можно будет добавить логику загрузки
+            // Пока используем дефолтную картинку
             params.put("IMAGE_PATH", getClass().getResourceAsStream("/flower1.png"));
 
             // Создаём datasource для таблицы координат
@@ -92,14 +83,16 @@ public class JasperServiceNew {
      */
     public byte[] createPointReport() {
         List<CoordinatesDto> coordinates = new ArrayList<>();
-        coordinates.add(new CoordinatesDto(1, "55.7558", "37.6173")); // Москва
-        
+        coordinates.add(new CoordinatesDto(1, 55.7558, 37.6173)); // Москва
+
         return createPdf(
-            "Значение 1", 
-            "Значение 2",
-            "1000000 руб.", 
-            "500 м²",
-            coordinates
+                "Тестовый отчёт",
+                null,
+                "Значение 1",
+                "Значение 2",
+                "EPSG:4326",
+                500.0,
+                coordinates
         );
     }
 
@@ -108,23 +101,25 @@ public class JasperServiceNew {
      */
     public byte[] createPolygonReport() {
         List<CoordinatesDto> coordinates = new ArrayList<>();
-        coordinates.add(new CoordinatesDto(1, "55.7558", "37.6173"));
-        coordinates.add(new CoordinatesDto(2, "55.7559", "37.6174"));
-        coordinates.add(new CoordinatesDto(3, "55.7560", "37.6175"));
-        coordinates.add(new CoordinatesDto(4, "55.7561", "37.6176"));
-        coordinates.add(new CoordinatesDto(5, "55.7562", "37.6177"));
-        coordinates.add(new CoordinatesDto(6, "55.7563", "37.6178"));
-        coordinates.add(new CoordinatesDto(7, "55.7564", "37.6179"));
-        coordinates.add(new CoordinatesDto(8, "55.7565", "37.6180"));
-        coordinates.add(new CoordinatesDto(9, "55.7566", "37.6181"));
-        coordinates.add(new CoordinatesDto(10, "55.7567", "37.6182"));
-        
+        coordinates.add(new CoordinatesDto(1, 55.7558, 37.6173));
+        coordinates.add(new CoordinatesDto(2, 55.7559, 37.6174));
+        coordinates.add(new CoordinatesDto(3, 55.7560, 37.6175));
+        coordinates.add(new CoordinatesDto(4, 55.7561, 37.6176));
+        coordinates.add(new CoordinatesDto(5, 55.7562, 37.6177));
+        coordinates.add(new CoordinatesDto(6, 55.7563, 37.6178));
+        coordinates.add(new CoordinatesDto(7, 55.7564, 37.6179));
+        coordinates.add(new CoordinatesDto(8, 55.7565, 37.6180));
+        coordinates.add(new CoordinatesDto(9, 55.7566, 37.6181));
+        coordinates.add(new CoordinatesDto(10, 55.7567, 37.6182));
+
         return createPdf(
-            "Полигон А", 
-            "Зона Б",
-            "5000000 руб.", 
-            "2500 м²",
-            coordinates
+                "Тестовый отчёт по полигону",
+                null,
+                "Полигон А",
+                "Зона Б",
+                "EPSG:4326",
+                2500.0,
+                coordinates
         );
     }
 }

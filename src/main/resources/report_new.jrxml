@@ -5,6 +5,7 @@
               name="report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
     
     <!-- Параметры для первой страницы -->
+    <parameter name="TITLE" class="java.lang.String"/>
     <parameter name="CELL1" class="java.lang.String"/>
     <parameter name="CELL2" class="java.lang.String"/>
     <parameter name="IMAGE_PATH" class="java.lang.String" isForPrompting="false">
@@ -17,21 +18,21 @@
     <parameter name="COORDINATES_DATA" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
     
     <!-- Поля для таблицы координат -->
-    <field name="number" class="java.lang.Integer"/>
-    <field name="x" class="java.lang.String"/>
-    <field name="y" class="java.lang.String"/>
+    <field name="num" class="java.lang.Integer"/>
+    <field name="x" class="java.lang.Double"/>
+    <field name="y" class="java.lang.Double"/>
     
     <!-- Заголовок первой страницы -->
     <title>
         <band height="400" splitType="Stretch">
             <!-- Заголовок -->
-            <staticText>
+            <textField isBlankWhenNull="true">
                 <reportElement x="0" y="10" width="555" height="30"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="16" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Это тестовый шаблон отчёта]]></text>
-            </staticText>
+                <textFieldExpression><![CDATA[$P{TITLE} != null ? $P{TITLE} : "Тестовый отчёт"]]></textFieldExpression>
+            </textField>
             
             <!-- Картинка -->
             <image scaleImage="RetainShape" hAlign="Center">
@@ -224,7 +225,7 @@
                     <rightPen lineWidth="1.0"/>
                 </box>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
             </textField>
             
             <textField>
@@ -237,7 +238,7 @@
                     <rightPen lineWidth="1.0"/>
                 </box>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression><![CDATA[$F{x}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[String.format("%.2f", $F{x})]]></textFieldExpression>
             </textField>
             
             <textField>
@@ -250,7 +251,7 @@
                     <rightPen lineWidth="1.0"/>
                 </box>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression><![CDATA[$F{y}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[String.format("%.2f", $F{y})]]></textFieldExpression>
             </textField>
         </band>
     </detail>

@@ -9,22 +9,22 @@ public class ClientData {
     String column;
     String value;
     String crs;
-    String area;
-    List<CoordinatesDto> coordinates;
+    Double area;
+    List<CoordinatesDto> coords;
 
     public ClientData() {
 
     }
 
-    public ClientData(String picture, String title, String column, String value, String crs, String area,
-                      List<CoordinatesDto> coordinates) {
+    public ClientData(String picture, String title, String column, String value, String crs, Double area,
+                      List<CoordinatesDto> coords) {
         this.picture = picture;
         this.title = title;
         this.column = column;
         this.value = value;
         this.crs = crs;
         this.area = area;
-        this.coordinates = coordinates;
+        this.coords = coords;
     }
 
     public String getPicture() {
@@ -67,19 +67,19 @@ public class ClientData {
         this.crs = crs;
     }
 
-    public String getArea() {
+    public Double getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(Double area) {
         this.area = area;
     }
 
-    public List<CoordinatesDto> getCoordinates() {
-        return coordinates;
+    public List<CoordinatesDto> getCoords() {
+        return coords;
     }
 
-    public void setCoordinates(List<CoordinatesDto> coordinates) {
-        this.coordinates = coordinates;
+    public void setCoords(List<CoordinatesDto> coords) {
+        this.coords = coords;
     }
 }

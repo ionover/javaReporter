@@ -2,40 +2,40 @@ package ru.mycrg.jasperreporte.dto;
 
 public class CoordinatesDto {
 
-    private long number;
-    private String x;
-    private String y;
+    private Integer num;
+    private Double x;
+    private Double y;
 
     public CoordinatesDto() {
     }
 
-    public CoordinatesDto(long number, String x, String y) {
-        this.number = number;
+    public CoordinatesDto(Integer num, Double x, Double y) {
+        this.num = num;
         this.x = x;
         this.y = y;
     }
 
-    public String getX() {
+    public Double getX() {
         return x;
     }
 
-    public void setX(String x) {
+    public void setX(Double x) {
         this.x = x;
     }
 
-    public String getY() {
+    public Double getY() {
         return y;
     }
 
-    public void setY(String y) {
+    public void setY(Double y) {
         this.y = y;
     }
 
-    public long getNumber() {
-        return number;
+    public Integer getNum() {
+        return num;
     }
 
-    public void setNumber(long number) {
-        this.number = number;
+    public void setNum(Integer num) {
+        this.num = num;
     }
 }

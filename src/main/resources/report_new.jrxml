@@ -228,7 +228,7 @@
                 <textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
             </textField>
             
-            <textField>
+            <textField pattern="#,##0.00">
                 <reportElement x="100" y="0" width="200" height="25"/>
                 <box>
                     <pen lineWidth="1.0"/>
@@ -238,10 +238,10 @@
                     <rightPen lineWidth="1.0"/>
                 </box>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression><![CDATA[String.format("%.2f", $F{x})]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{x}]]></textFieldExpression>
             </textField>
             
-            <textField>
+            <textField pattern="#,##0.00">
                 <reportElement x="300" y="0" width="200" height="25"/>
                 <box>
                     <pen lineWidth="1.0"/>
@@ -251,7 +251,7 @@
                     <rightPen lineWidth="1.0"/>
                 </box>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression><![CDATA[String.format("%.2f", $F{y})]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{y}]]></textFieldExpression>
             </textField>
         </band>
     </detail>

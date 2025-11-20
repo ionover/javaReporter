@@ -3,6 +3,9 @@ package ru.mycrg.jasperreporte;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.stereotype.Service;
+import ru.mycrg.jasperreporte.dto.ClientData;
+import ru.mycrg.jasperreporte.dto.CoordinatesDto;
+import ru.mycrg.jasperreporte.dto.ReportDto;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -14,7 +17,8 @@ import java.util.Map;
 public class JasperServiceNew {
 
     /**
-     * Класс для передачи координат в отчёт
+     * Класс для передачи координат в отчёт JasperReports
+     * Нужен для связи с полями в JRXML (number, x, y)
      */
     public static class Coordinate {
         private Integer number;
@@ -53,7 +57,43 @@ public class JasperServiceNew {
     }
 
     /**
-     * Создаёт PDF отчёт с новым шаблоном
+     * Основной метод - работает с твоим ReportDto
+     */
+    public byte[] createPdf(ReportDto reportDto) {
+        if (reportDto == null || reportDto.d == null) {
+            throw new IllegalArgumentException("ReportDto или ClientData не должны быть null");
+        }
+
+        ClientData data = reportDto.d;
+
+        // Конвертируем координаты из твоего DTO в формат для JasperReports
+        List<Coordinate> coordinates = convertCoordinates(data.getCoordinates());
+
+        return createPdf(
+            data.getColumn(),  // CELL1
+            data.getValue(),   // CELL2
+            data.getCrs(),     // PRICE (или можешь использовать для другого поля)
+            data.getArea(),    // AREA
+            coordinates
+        );
+    }
+
+    /**
+     * Конвертирует твои CoordinatesDto в Coordinate для JasperReports
+     */
+    private List<Coordinate> convertCoordinates(List<CoordinatesDto> dtoList) {
+        List<Coordinate> result = new ArrayList<>();
+        if (dtoList != null) {
+            for (int i = 0; i < dtoList.size(); i++) {
+                CoordinatesDto dto = dtoList.get(i);
+                result.add(new Coordinate(i + 1, dto.getX(), dto.getY()));
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Низкоуровневый метод создания PDF
      */
     public byte[] createPdf(String cell1, String cell2, String price, String area, List<Coordinate> coordinates) {
         try (InputStream templateStream = getClass().getResourceAsStream("/report_new.jrxml")) {
@@ -83,7 +123,7 @@ public class JasperServiceNew {
             // Возвращаем PDF как byte[]
             return JasperExportManager.exportReportToPdf(jasperPrint);
         } catch (Exception e) {
-            throw new RuntimeException("Ошибка при генерации PDF", e);
+            throw new RuntimeException("Ошибка при генерации PDF: " + e.getMessage(), e);
         }
     }
 

@@ -51,7 +51,7 @@ public class JasperServiceNew {
             }
 
             // Компилируем JRXML в JasperReport
-            JasperReport jasperReport = null;
+            JasperReport jasperReport;
             try {
                 jasperReport = JasperCompileManager.compileReport(templateStream);
             } catch (Exception e) {
@@ -83,50 +83,5 @@ public class JasperServiceNew {
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при генерации PDF: " + e.getMessage(), e);
         }
-    }
-
-    /**
-     * Пример использования - создание отчёта для точки (1 координата)
-     */
-    public byte[] createPointReport() {
-        List<CoordinatesDto> coordinates = new ArrayList<>();
-        coordinates.add(new CoordinatesDto(1, 55.7558, 37.6173)); // Москва
-
-        return createPdf(
-                "Тестовый отчёт",
-                null,
-                "Значение 1",
-                "Значение 2",
-                "EPSG:4326",
-                500.0,
-                coordinates
-        );
-    }
-
-    /**
-     * Пример использования - создание отчёта для полигона (много координат)
-     */
-    public byte[] createPolygonReport() {
-        List<CoordinatesDto> coordinates = new ArrayList<>();
-        coordinates.add(new CoordinatesDto(1, 55.7558, 37.6173));
-        coordinates.add(new CoordinatesDto(2, 55.7559, 37.6174));
-        coordinates.add(new CoordinatesDto(3, 55.7560, 37.6175));
-        coordinates.add(new CoordinatesDto(4, 55.7561, 37.6176));
-        coordinates.add(new CoordinatesDto(5, 55.7562, 37.6177));
-        coordinates.add(new CoordinatesDto(6, 55.7563, 37.6178));
-        coordinates.add(new CoordinatesDto(7, 55.7564, 37.6179));
-        coordinates.add(new CoordinatesDto(8, 55.7565, 37.6180));
-        coordinates.add(new CoordinatesDto(9, 55.7566, 37.6181));
-        coordinates.add(new CoordinatesDto(10, 55.7567, 37.6182));
-
-        return createPdf(
-                "Тестовый отчёт по полигону",
-                null,
-                "Полигон А",
-                "Зона Б",
-                "EPSG:4326",
-                2500.0,
-                coordinates
-        );
     }
 }
